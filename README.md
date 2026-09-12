@@ -70,3 +70,4 @@ Without `.venv`, `run_all.sh` skips the notebook step and says so; everything el
 - **Charts** use a categorical palette validated for colour-vision deficiency against the chart
   surface (worst adjacent pair ΔE 9.2 deutan / 27.6 normal). Where colour carries a verdict it is
   always paired with a ✓/✗ glyph and a text column, never colour alone.
+# assignment
