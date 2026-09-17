@@ -164,4 +164,4 @@ something that runs continuously rather than a document that goes stale.
 
 ---
 
-Previous: [Part 8 — Points liability](part8-points-liability.md) · [Back to the index](../ANSWERS.md)
+Previous: [Part 8 — Points liability](part8-points-liability.md) · [Back to the README](../README.md)

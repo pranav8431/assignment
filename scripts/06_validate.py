@@ -72,7 +72,7 @@ check("post-cleaning negative balances == 21", post_neg == 21, f"{post_neg}")
 # the write-up is split by part; read every markdown file so the prose checks
 # below don't silently pass just because a section moved to another file
 import glob as _glob
-_files = [os.path.join(BASE, "ANSWERS.md")] + sorted(_glob.glob(os.path.join(BASE, "answers", "*.md")))
+_files = sorted(_glob.glob(os.path.join(BASE, "answers", "*.md")))
 _ans = "\n".join(open(f).read() for f in _files)
 print(f"  write-up spans {len(_files)} files, {len(_ans.split()):,} words")
 check("the write-up states the corrected claim (5 in source, 16 self-inflicted)",
@@ -82,10 +82,11 @@ check("the write-up states the corrected claim (5 in source, 16 self-inflicted)"
       "asserts the prose, not just the data")
 check("the write-up no longer asserts 21 as source-data evidence",
       "21 members have a negative point balance.** Impossible" not in _ans)
-check("every part file is linked from the index",
-      all(os.path.basename(f) in open(os.path.join(BASE, "ANSWERS.md")).read()
-          for f in _files if "answers/" in f),
-      "index has no orphan parts")
+_expected = {f"part{i}" for i in range(1, 9)} | {"decision-log"}
+_found = {os.path.basename(f).split("-")[0] if os.path.basename(f).startswith("part")
+          else os.path.basename(f)[:-3] for f in _files}
+check("all 8 part files and the decision log are present in answers/",
+      _expected <= _found, f"missing: {sorted(_expected - _found) or 'none'}")
 
 # Identity resolution: emails shared across DIFFERENT member_ids (Part 1, M2b)
 import csv as _csv, collections as _c

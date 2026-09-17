@@ -161,7 +161,8 @@ print(f"rows with amount >= 9,999 : {len(sent)}")
 for (val, brand), n in sorted(cnt.items(), key=lambda x: -x[0][0]):
     print(f"   {val:>12,.2f}  brand={brand:10s} x{n}")
 print(f"\nby brand: {dict(collections.Counter(b for _, b in sent))}")
-print("=> 14 of 15 land on PulseMart. See Part 6: these 15 rows INVERT the brand ranking.")
+_pm = sum(1 for _, b in sent if b == "PulseMart")
+print(f"=> {_pm} of {len(sent)} land on PulseMart. See Part 6: these rows INVERT the brand ranking.")
 
 rule("T3 -- negative amounts that still granted points")
 negs = [t for t in txns if (num(t["amount"]) or 0) < 0]

@@ -33,8 +33,7 @@ Without `.venv`, `run_all.sh` skips the notebook step and says so; everything el
 
 | Path | |
 |---|---|
-| `ANSWERS.md` | **Start here.** Index, how to run it, and what to expect |
-| `answers/part1-data-quality.md` … `part8-…` | The response, one file per part |
+| `answers/part1-data-quality.md` … `part8-…` | **Start here.** The response, one file per part |
 | `answers/decision-log.md` | Per part: decisions, rejected alternatives, where AI got it wrong |
 | `scripts/01_profile.py` | Data quality audit — generates every figure quoted in Part 1 |
 | `scripts/02_build_db.py` | Loads both CSVs into SQLite as an untouched RAW layer |
